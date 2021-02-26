@@ -2,6 +2,8 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+To run the app on your machine, install node modules by opening this files directory in the terminal and install node modules. To install type in the terminal: npm install node modules
+
 ## Available Scripts
 
 In the project directory, you can run:
