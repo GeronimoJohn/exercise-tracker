@@ -14,11 +14,17 @@ app.use(express.json());
 
 // connection to mongodb
 const uri = process.env.ATLAS_URI;
-mongoose.connect(uri, {
-  useNewUrlParser: true,
-  useCreateIndex: true,
-  useUnifiedTopology: true,
-});
+mongoose
+  .connect(uri, {
+    useNewUrlParser: true,
+    useCreateIndex: true,
+    useUnifiedTopology: true,
+  })
+  .then(() =>
+    app.listen(port, () => console.log(`Server is running on port: ${port}`))
+  )
+  .catch((error) => console.log(`${error} did not connect`));
+
 const connection = mongoose.connection;
 connection.once("open", () => {
   console.log("MongoDB database connection established successfully");
@@ -33,7 +39,3 @@ app.get("/", (req, res) => {
 
 app.use("/exercises", exercisesRouter);
 app.use("/users", usersRouter);
-
-app.listen(port, () => {
-  console.log(`Server is running on port: ${port}`);
-});
