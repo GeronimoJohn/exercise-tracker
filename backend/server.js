@@ -27,6 +27,10 @@ connection.once("open", () => {
 const exercisesRouter = require("./routes/exercises");
 const usersRouter = require("./routes/users");
 
+app.get("/", (req, res) => {
+  console.log("This is the backend server for etrace");
+});
+
 app.use("/exercises", exercisesRouter);
 app.use("/users", usersRouter);
 
