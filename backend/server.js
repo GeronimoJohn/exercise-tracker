@@ -14,11 +14,14 @@ app.use(express.json());
 
 // connection to mongodb
 const uri = process.env.ATLAS_URI;
-mongoose.connect(uri, {
-  useNewUrlParser: true,
-  useCreateIndex: true,
-  useUnifiedTopology: true,
-});
+mongoose.connect(
+  "mongodb+srv://exerciseDB:J0hnI996@cluster0.r2yhr.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
+  {
+    useNewUrlParser: true,
+    useCreateIndex: true,
+    useUnifiedTopology: true,
+  }
+);
 
 const connection = mongoose.connection;
 connection.once("open", () => {
