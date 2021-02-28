@@ -46,7 +46,7 @@ export default class Exerciselist extends Component {
 
   deleteExercise(id) {
     axios
-      .delete("https://e-trace.herokuapp.com/exercises" + id)
+      .delete("https://e-trace.herokuapp.com/exercises/" + id)
       .then((res) => console.log(res.data));
 
     this.setState({
