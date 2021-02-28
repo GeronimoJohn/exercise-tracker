@@ -14,16 +14,11 @@ app.use(express.json());
 
 // connection to mongodb
 const uri = process.env.ATLAS_URI;
-mongoose
-  .connect(uri, {
-    useNewUrlParser: true,
-    useCreateIndex: true,
-    useUnifiedTopology: true,
-  })
-  .then(() =>
-    app.listen(port, () => console.log(`Server is running on port: ${port}`))
-  )
-  .catch((error) => console.log(`${error} did not connect`));
+mongoose.connect(uri, {
+  useNewUrlParser: true,
+  useCreateIndex: true,
+  useUnifiedTopology: true,
+});
 
 const connection = mongoose.connection;
 connection.once("open", () => {
@@ -33,9 +28,7 @@ connection.once("open", () => {
 const exercisesRouter = require("./routes/exercises");
 const usersRouter = require("./routes/users");
 
-app.get("/", (req, res) => {
-  console.log("This is the backend server for etrace");
-});
-
 app.use("/exercises", exercisesRouter);
 app.use("/users", usersRouter);
+
+app.listen(port, () => console.log(`Server is running on port: ${port}`));
